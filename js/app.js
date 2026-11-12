@@ -77,12 +77,12 @@ function roulette() {
     
     //次のために番号を1進める。12の次は1に戻るようにループ処理
     //currentNum % 12に1を足して、余りを1~12に調整
-    currentNum = (currentNum % 12);
+    currentNum = (currentNum % 12 + 1);
     console.log(currentNum + "A");
     count++; // 0から12まで足し続ける
     console.log(count++ + "足す");
     
-    $(".shuter-hole").text(currentNum); // 獲得枚数を表示する
+    $(".shuter-hole").text(currentNum-1); // 獲得枚数を表示する
     $(".shuter-label").text("Pゲット!");
     $(".shuter-hole").css("color", "gray");
     currentNum ++ ;
