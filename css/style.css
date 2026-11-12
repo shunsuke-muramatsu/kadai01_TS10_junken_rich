@@ -1,0 +1,248 @@
+/* 文字化けを避ける このcssファイルはUTF-8という文字コードで書かれている、とブラウザに伝える */
+@charset "UTF-8"; 
+
+/* ここが一番、時間かかった。調べた。activeになった時、光るように見せる */
+  .square-item.active {
+    background-color: #ffd700;
+    box-shadow: 0 0 10px #ffd700;
+    font-weight: bold;
+  }
+
+body {
+  background-color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  user-select: none;
+}
+
+/* 全体のレイアウト：左右に並べる */
+.game-container {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 60px;
+  background: yellow;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border: 4px solid #34495e;
+}
+
+/* 左側のメインエリア */
+.main-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+  /* 12マスの親要素 */
+.circle-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+/* 各マス（扇形）のスタイル */
+.square-item {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 104px;
+  height: 100px;
+  margin-left: -52px;
+  clip-path: polygon(0 0, 100% 0, 73.2% 100%, 26.8% 100%);
+  transform-origin: center 200px;
+  background-color: #34495e;
+  color: #bdc3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+  transition: background-color 0.1s;
+}
+
+/* 各マスの回転と文字の逆回転 / ここはAIと相談 */
+.square-item:nth-child(1)  { transform: rotate(0deg); }
+.square-item:nth-child(2)  { transform: rotate(30deg); }
+.square-item:nth-child(2)  font { transform: rotate(-30deg); }
+.square-item:nth-child(3)  { transform: rotate(60deg); }
+.square-item:nth-child(3)  font { transform: rotate(-60deg); }
+.square-item:nth-child(4)  { transform: rotate(90deg); }
+.square-item:nth-child(4)  font { transform: rotate(-90deg); }
+.square-item:nth-child(5)  { transform: rotate(120deg); }
+.square-item:nth-child(5)  font { transform: rotate(-120deg); }
+.square-item:nth-child(6)  { transform: rotate(150deg); }
+.square-item:nth-child(6)  font { transform: rotate(-150deg); }
+.square-item:nth-child(7)  { transform: rotate(180deg); }
+.square-item:nth-child(7)  font { transform: rotate(-180deg); }
+.square-item:nth-child(8)  { transform: rotate(210deg); }
+.square-item:nth-child(8)  font { transform: rotate(-210deg); }
+.square-item:nth-child(9)  { transform: rotate(240deg); }
+.square-item:nth-child(9)  font { transform: rotate(-240deg); }
+.square-item:nth-child(10) { transform: rotate(270deg); }
+.square-item:nth-child(10) font { transform: rotate(-270deg); }
+.square-item:nth-child(11) { transform: rotate(300deg); }
+.square-item:nth-child(11) font { transform: rotate(-300deg); }
+.square-item:nth-child(12) { transform: rotate(330deg); }
+.square-item:nth-child(12) font { transform: rotate(-330deg); }
+
+/* 中央のじゃんけん画面 */
+.janken-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  margin: -80px 0 0 -80px;
+  background-color: #000;
+  border: 4px solid #7f8c8d;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+}
+
+.janken-display {
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+#result-text {
+  padding: 15px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px black;
+  transition: all 0.1s;
+}
+
+/* 下の3つボタン */
+.player-buttons {
+  display: flex;
+  text-align: center;
+  gap: 15px;
+}
+
+.player-btn {
+  padding: 15px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px #2980b9;
+  transition: all 0.1s;
+}
+
+.player-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px #2980b9;
+}
+
+.game-start {
+  padding: 15px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px pink;
+  transition: all 0.1s;
+}
+
+/* 右側全体 */
+.right-allarea{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;  
+}
+
+/* 右側：上エリア */
+.right-uparea {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 140px;
+}
+
+/* 右側：下エリア */
+.right-downarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 140px;
+
+}
+
+.game-reset {
+  padding: 15px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.coin-count {
+  padding: 15px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+/* メダル表示 */
+.coin-shuter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.shuter-hole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  width: 100px;
+  height: 35px;
+  font-size: 35px;
+  font-weight: bold;
+}
+.shuter-label {
+  color: #888;
+  font-size: 25px;
+  margin-top: 3px;
+}
+
+  /* .main-area:active {
+    background-color: #ffd700;
+    box-shadow: 0 0 10px #ffd700;
+    font-weight: bold;
+  } */

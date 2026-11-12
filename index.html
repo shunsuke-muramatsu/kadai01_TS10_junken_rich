@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- 全体を指定する -->
+<div class="game-container">
+    
+    <!-- 左側：メインエリア -->
+    <div class="main-area">
+
+      <!-- 結果を表示 -->
+       <div id="result"></div>
+
+      <!-- 12マスのドーナツ型に配置する / fontで操作できるようにfont置いておく-->
+      <div class="circle-container">
+        <div class="square-item" data-payout="1"><font>1</font></div> 
+        <div class="square-item" data-payout="2"><font>2</font></div>
+        <div class="square-item" data-payout="3"><font>3</font></div>
+        <div class="square-item" data-payout="4"><font>4</font></div>
+        <div class="square-item" data-payout="5"><font>5</font></div>
+        <div class="square-item" data-payout="6"><font>6</font></div>
+        <div class="square-item" data-payout="7"><font>7</font></div>
+        <div class="square-item" data-payout="8"><font>8</font></div>
+        <div class="square-item" data-payout="9"><font>9</font></div>
+        <div class="square-item" data-payout="10"><font>10</font></div>
+        <div class="square-item" data-payout="11"><font>11</font></div>
+        <div class="square-item" data-payout="12"><font>12</font></div>
+
+        <!-- 中央のじゃんけん画面 -->
+        <div class="janken-center">
+          <div class="janken-display"></div>
+                  <!-- 結果 -->
+        <div id="result-text" class="result"></div>
+        </div>
+      </div>
+      
+            <!-- 円の下：プレイヤーのグー・チョキ・パーボタン -->
+      <div class="player-buttons">
+        <button class="player-btn" data-hand="✊">✊ グー</button>
+        <button class="player-btn" data-hand="✌️">✌️ チョキ</button>
+        <button class="player-btn" data-hand="✋">✋ パー</button>
+      </div>
+    <div>
+      <button class="game-start">スタート</div>
+  </div>
+
+<!-- 右側エリア全体 -->
+<div class="right-allarea">
+    <!-- 右側：上エリア -->
+    <div class="right-uparea">
+    <div class="coin-count">ポイント</div>
+        <div class="coin-shuter">
+            <div class="shuter-hole"></div>
+            <div class="shuter-label"></div>
+        </div>
+    </div>
+  
+   <!-- 右側：下エリア -->
+    <div class="right-downarea">
+        <button class="game-reset">リセット</div>
+    </div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
