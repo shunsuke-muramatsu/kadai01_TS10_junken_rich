@@ -38,8 +38,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: red;
   gap: 35px;
 }
+
+.main-title {
+  display:flex;
+  font-style: oblique;
+  font-size: 30px;
+  font-weight: bold;
+}
+
   /* 12マスの親要素 */
 .circle-container {
   position: relative;
